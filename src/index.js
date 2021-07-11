@@ -1,12 +1,31 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import { BrowserRouter } from 'react-router-dom'
+import { Provider } from 'react-redux'
+import { createStore } from 'redux'
+import throttle from 'lodash/throttle'
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import reducer from './store/reducer'
+import { loadState, saveState } from './localStorage'
+
+const persistedState = loadState()
+const store = createStore(reducer, persistedState)
+
+store.subscribe(throttle(() => {
+  saveState({
+    appointments: store.getState().appointments
+  })
+}, 1000))
 
 ReactDOM.render(
   <React.StrictMode>
-    <App />
+    <Provider store={store}>
+      <BrowserRouter>
+        <App />
+      </BrowserRouter>
+    </Provider>
   </React.StrictMode>,
   document.getElementById('root')
 );

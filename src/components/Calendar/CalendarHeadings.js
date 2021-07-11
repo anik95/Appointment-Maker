@@ -1,7 +1,7 @@
 import React from 'react'
 import { CalendarHeader, CalendarHeaderDay } from '../../StyledComponents'
 
-const Headings = props => {
+const CalendarHeadings = props => {
   return (
     <CalendarHeader>
       {
@@ -13,4 +13,4 @@ const Headings = props => {
   )
 }
 
-export default Headings
+export default CalendarHeadings
