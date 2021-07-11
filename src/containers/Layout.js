@@ -3,14 +3,14 @@ import { Route, useHistory } from 'react-router-dom'
 import { connect } from 'react-redux'
 import moment from 'moment'
 
-import Calendar from '../containers/Calendar'
+import Calendar from './Calendar'
 import Header from '../components/Header'
 import Modal from '../components/Modal'
-import AppointmentForm from '../containers/AppointmentForm'
+import AppointmentForm from './AppointmentForm'
 
 import { MainLayout } from '../StyledComponents'
 
-import * as actionTypes from './../store/actions'
+import * as actionTypes from '../store/actions'
 
 const Layout = (props) => {
   const history = useHistory()
